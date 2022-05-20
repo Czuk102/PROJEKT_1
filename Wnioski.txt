@@ -17,3 +17,5 @@ Natomiast quickSort wypadł najgorzej z porównanych, warto również dodać że
 dlatego żeby otrzymać wyniki musiałem wymysić zwiekszenie pojemności stosu (patrz plik CMakeLists.txt) co niejest wskazane i pokazuje że ten algorytm ,
 z racji swojej rekurencyjności nie sprawdza się dla dużych ilości liczb. Sortowanie bombelkowe dla zadanych danych w każdym przypadku zachował podobną złożonośc czasową.
 Średnio najlepiej poradził sobie heapSort, potem mergeSort następnie bubbleSort a najgorzej quickSort.
+
+Link do repozytorium: https://github.com/Czuk102/PROJEKT_1.git
