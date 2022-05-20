@@ -1,0 +1,19 @@
+Wyniki:
+
++------------+-------------------------+-----------------------------+---------------------------------------+
+|            | tablica losowych liczb  | tablica posortowanych liczb | tablica odwrotnie posortowanych liczb |
++------------+-------------------------+-----------------------------+---------------------------------------+
+| heapSort   | 0.06400 s               | 0.04900 s                   | 0.00300 s                             |
++------------+-------------------------+-----------------------------+---------------------------------------+
+| quickSort  | 149.28700 s             | 147.73800 s                 | 146.28700 s                           |
++------------+-------------------------+-----------------------------+---------------------------------------+
+| mergeSort  | 0.02400 s               | 0.02400 s                   | 0.02600 s                             |
++------------+-------------------------+-----------------------------+---------------------------------------+
+| bubbleSort | 82.58500 s              | 79.77500 s                  | 79.55700 s                            |
++------------+-------------------------+-----------------------------+---------------------------------------+
+
+Otrzymane wyniki wskazują ,że dla tablicy posortowanej oraz losowej najszybciej poradził sobie algorytm mergeSort a dla odwrotnie posortowanej heapSort.
+Natomiast quickSort wypadł najgorzej z porównanych, warto również dodać że dla domyślych ustawień kompilatora gcc quicksort przepełniał stos (stack overflow),
+dlatego żeby otrzymać wyniki musiałem wymysić zwiekszenie pojemności stosu (patrz plik CMakeLists.txt) co niejest wskazane i pokazuje że ten algorytm ,
+z racji swojej rekurencyjności nie sprawdza się dla dużych ilości liczb. Sortowanie bombelkowe dla zadanych danych w każdym przypadku zachował podobną złożonośc czasową.
+Średnio najlepiej poradził sobie heapSort, potem mergeSort następnie bubbleSort a najgorzej quickSort.
