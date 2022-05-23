@@ -13,25 +13,27 @@
 #include <stdio.h>
 #include <time.h>
 
+int SIZE = 300000;
 
-int *generateRandomArray() {
-    static int numbers[300000];
+
+int *generateRandomArray(int size) {
+    int *numbers = (int *) malloc(sizeof(*numbers) * size);
     for (int i = 0; i <= 300000; i++) {
         numbers[i] = rand();
     }
     return numbers;
 }
 
-int *generateSortedArray() {
-    static int numbers[300000];
+int *generateSortedArray(int size) {
+    int *numbers = (int *) malloc(sizeof(*numbers) * size);
     for (int i = 0; i < 300000; i++) {
         numbers[i] = i;
     }
     return numbers;
 }
 
-int *generateReverseSortedArray() {
-    static int numbers[300000];
+int *generateReverseSortedArray(int size) {
+    int *numbers = (int *) malloc(sizeof(*numbers) * size);
     for (int i = 300000; i < 0; i--) {
         numbers[i] = i;
     }
@@ -76,12 +78,6 @@ void heapSort(int arr[], int n) {
     }
 }
 
-// Print an array
-void printArray(int arr[], int n) {
-    for (int i = 0; i < n; ++i)
-        printf("%d ", arr[i]);
-    printf("\n");
-}
 
 int partition(int array[], int low, int high) {
 
@@ -178,6 +174,7 @@ void bubbleSort(int arr[], int n) {
                 swap(&arr[j], &arr[j + 1]);
 }
 
+
 int main() {
 
     printf("PROJEKT 1\n\n");
@@ -186,28 +183,30 @@ int main() {
 
     // numbers generated multiple times are the same in each array
     srand(1);
-    int *randomArr1 = generateRandomArray();
-    int *randomArr2 = generateRandomArray();
-    int *randomArr3 = generateRandomArray();
-    int *randomArr4 = generateRandomArray();
-
+    int *randomArr1 = generateRandomArray(SIZE);
 
     clock_t start_heap = clock();
     heapSort(randomArr1, 300000);
     clock_t end_heap = clock();
+    free(randomArr1);
 
+    int *randomArr2 = generateRandomArray(SIZE);
     clock_t start_quick = clock();
     quickSort(randomArr2, 0, 300000 - 1);
     clock_t end_quick = clock();
+    free(randomArr2);
 
-
+    int *randomArr3 = generateRandomArray(SIZE);
     clock_t start_merge = clock();
     mergeSort(randomArr3, 0, 299999);
     clock_t end_merge = clock();
+    free(randomArr3);
 
+    int *randomArr4 = generateRandomArray(SIZE);
     clock_t start_bubble = clock();
     bubbleSort(randomArr4, 300000);
     clock_t end_bubble = clock();
+    free(randomArr4);
 
     double elapsed_heap = double(end_heap - start_heap) / CLOCKS_PER_SEC;
     double elapsed_quick = double(end_quick - start_quick) / CLOCKS_PER_SEC;
@@ -216,33 +215,42 @@ int main() {
 
 
     printf("Wynik losowych liczb dla heapSort to %.5f sekund\n", elapsed_heap);
-    printf("Wynik losowych liczb dla quickSort to %.5f se0kund\n", elapsed_quick);
+    printf("Wynik losowych liczb dla quickSort to %.5f sekund\n", elapsed_quick);
     printf("Wynik losowych liczb dla mergeSort to %.5f sekund\n", elapsed_merge);
     printf("Wynik losowych liczb dla bubbleSort to %.5f sekund\n\n", elapsed_bubble);
 
-
 ////////////////////////////////////////////////////////////////////////////////////////////
 
-    int *sortedArr1 = generateSortedArray();
-    int *sortedArr2 = generateSortedArray();
-    int *sortedArr3 = generateSortedArray();
-    int *sortedArr4 = generateSortedArray();
-
+    int *sortedArr1;
+    sortedArr1 = generateSortedArray(SIZE);
     start_heap = clock();
     heapSort(sortedArr1, 300000);
     end_heap = clock();
+    free(sortedArr1);
 
+    int *sortedArr2;
+    sortedArr2 = generateSortedArray(SIZE);
     start_quick = clock();
     quickSort(sortedArr2, 0, 300000 - 1);
     end_quick = clock();
+    free(sortedArr2);
 
+
+    int *sortedArr3;
+    sortedArr3 = generateSortedArray(SIZE);
     start_merge = clock();
-    mergeSort(sortedArr3, 0, 300000 -1);
+    mergeSort(sortedArr3, 0, 300000 - 1);
     end_merge = clock();
+    free(sortedArr3);
 
+
+    int *sortedArr4;
+    sortedArr4 = generateSortedArray(SIZE);
     start_bubble = clock();
     bubbleSort(sortedArr4, 300000);
     end_bubble = clock();
+    free(sortedArr4);
+
 
     elapsed_heap = double(end_heap - start_heap) / CLOCKS_PER_SEC;
     elapsed_quick = double(end_quick - start_quick) / CLOCKS_PER_SEC;
@@ -254,28 +262,35 @@ int main() {
     printf("Wynik posortowanych liczb dla mergeSort to %.5f sekund\n", elapsed_merge);
     printf("Wynik posortowanych liczb dla bubbleSort to %.5f sekund\n\n", elapsed_bubble);
 
-////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
 
-    int *reversedArr1 = generateReverseSortedArray();
-    int *reversedArr2 = generateReverseSortedArray();
-    int *reversedArr3 = generateReverseSortedArray();
-    int *reversedArr4 = generateReverseSortedArray();
-
+    int *reversedArr1;
+    reversedArr1 = generateReverseSortedArray(SIZE);
     start_heap = clock();
     heapSort(reversedArr1, 300000);
     end_heap = clock();
+    free(reversedArr1);
 
+    int *reversedArr2;
+    reversedArr2 = generateReverseSortedArray(SIZE);
     start_quick = clock();
     quickSort(reversedArr2, 0, 300000 - 1);
     end_quick = clock();
+    free(reversedArr2);
 
+    int *reversedArr3;
+    reversedArr3 = generateReverseSortedArray(SIZE);
     start_merge = clock();
     mergeSort(reversedArr3, 0, 300000 - 1);
     end_merge = clock();
+    free(reversedArr3);
 
+    int *reversedArr4;
+    reversedArr4 = generateReverseSortedArray(SIZE);
     start_bubble = clock();
     bubbleSort(reversedArr4, 300000);
     end_bubble = clock();
+    free(reversedArr4);
 
     elapsed_heap = double(end_heap - start_heap) / CLOCKS_PER_SEC;
     elapsed_quick = double(end_quick - start_quick) / CLOCKS_PER_SEC;
