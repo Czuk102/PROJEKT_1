@@ -19,6 +19,7 @@ wobec czego musiałem zwiekszyć rozmiar stosu(patrz plik CMakeLists.txt) dlateg
 nie nadaje się do sortowania tablic posortowanych ale z założenia nie powinno się dopuszczać do takich sytuacji
 więc można go uznać za najbardziej efektywny dla losowych lub zbliżonych do losowych liczb.
 HeapSort spisal się najlepiej z tablica odwrotnie posortowaną,o jeden rząd wielkości niż reszta.
+bubbleSort nie nadaje się do dużych seri danych co wyraźnie widać.
 MergeSort spisał się średnio najlepiej z wszystkich algorymów,
 dlatego można uznać go za najbardziej uniwersalny i można go stosować w momencie kiedy nie wiemy czy nasze dane wejsciowe
 nie są przypadkiem juz posortowane. Jako ogólny wniosek, wypada stwierdzić ,że zanim wybierzemy metode sortowania
